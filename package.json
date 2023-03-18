@@ -1,0 +1,28 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "This is my backend server for mern stack project",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "dev": "npm start",
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mananisumit98/mern-server.git"
+  },
+  "author": "Sumit Manani",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mananisumit98/mern-server/issues"
+  },
+  "homepage": "https://github.com/mananisumit98/mern-server#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "joi": "^17.8.4",
+    "mongoose": "^7.0.2"
+  }
+}
