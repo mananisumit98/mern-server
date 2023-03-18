@@ -1,8 +1,13 @@
 const { Router } = require('express');
 const router = Router();
 
-const Category = require('../models/category');
-const { createOne, getAll, getById, updateOne, deleteOne, disableCategory } = require('../controllers/category');
+const { createOne,
+    getAll,
+    getById,
+    updateOne,
+    deleteOne,
+    disableCategory
+} = require('../controllers/category');
 
 // Get all categories
 router.get('/', getAll);
