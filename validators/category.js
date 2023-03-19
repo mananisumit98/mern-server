@@ -1,8 +1,19 @@
 const Joi = require('joi');
 
 // Post categories
-const createOne = async (req, res) => {
+const createOneValidation = async (req, res, next) => {
     try {
+        const Schema = Joi.object({
+            name: Joi.string().required(),
+        });
+
+        const { error } = Schema.validate(req.body);
+
+        if (error) {
+            return res.json({ error });
+        }
+
+        next();
 
     } catch (error) {
         return res.json({ message: "Catch Error", status: "Fail", error: error.message });
@@ -10,39 +21,85 @@ const createOne = async (req, res) => {
 };
 
 // Get a single categories
-const getById = async (req, res) => {
+const getByIdValidation = async (req, res, next) => {
     try {
+        const Schema = Joi.object({
+            id: Joi.string().required(),
+        });
 
+        const { error } = Schema.validate(req.params);
+
+        if (error) {
+            return res.json({ error });
+        }
+
+        next();
     } catch (error) {
         return res.json({ message: "Catch Error", status: "Fail", error: error.message });
     }
 };
 
 // Update categories
-const updateOne = async (req, res) => {
+const updateOneValidation = async (req, res, next) => {
     try {
+        const Schema = Joi.object({
+            id: Joi.string().required(),
+        });
 
+        const { error } = Schema.validate(req.params);
+
+        if (error) {
+            return res.json({ error });
+        }
+        next();
     } catch (error) {
         return res.json({ message: "Catch Error", status: "Fail", error: error.message });
     }
 };
 
 // Delete categories
-const deleteOne = async (req, res) => {
+const deleteOneValidation = async (req, res, next) => {
     try {
+        const Schema = Joi.object({
+            id: Joi.string().required(),
+        });
 
+        const { error } = Schema.validate(req.params);
+
+        if (error) {
+            return res.json({ error });
+        }
+        next();
     } catch (error) {
         return res.json({ message: "Catch Error", status: "Fail", error: error.message });
     }
 };
 
 // Disable categories
-const disableCategory = async (req, res) => {
+const disableValidation = async (req, res, next) => {
     try {
 
+        const { status } = req.body;
+        const { id } = req.params;
+
+        const Schema = Joi.object({
+            id: Joi.string().required(),
+            status: Joi.boolean()
+        });
+
+        const { error } = Schema.validate({ id, status });
+
+        if (error) {
+            return res.json({ error });
+        }
+
+        next();
     } catch (error) {
         return res.json({ message: "Catch Error", status: "Fail", error: error.message });
     }
 };
 
-module.exports = { createOne, getAll, getById, updateOne, deleteOne, disableCategory };
+module.exports = {
+    createOneValidation
+    , getByIdValidation, updateOneValidation, deleteOneValidation, disableValidation
+};

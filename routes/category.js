@@ -9,23 +9,31 @@ const { createOne,
     disableCategory
 } = require('../controllers/category');
 
+const {
+    createOneValidation,
+    getByIdValidation,
+    updateOneValidation,
+    deleteOneValidation,
+    disableValidation,
+} = require('../validators/category');
+
 // Get all categories
 router.get('/', getAll);
 
 // Post categories
-router.post('/', createOne);
+router.post('/', [createOneValidation], createOne);
 
 // Get a single categories
-router.get('/:id', getById);
+router.get('/:id', [getByIdValidation], getById);
 
 // Update categories
-router.patch('/:id', updateOne);
+router.patch('/:id', [updateOneValidation], updateOne);
 
 // Delete categories
-router.delete('/:id', deleteOne);
+router.delete('/:id', [deleteOneValidation], deleteOne);
 
 // Disable categories
-router.patch('/disable/:id', disableCategory);
+router.patch('/disable/:id', [disableValidation], disableCategory);
 
 
 module.exports = router;
